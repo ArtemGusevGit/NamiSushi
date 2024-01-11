@@ -1,0 +1,15 @@
+@mixin font($font-name, $font-style, $font-weight, $font-url) {
+  @font-face {
+    font-display: swap;
+    font-family: $font-name;
+    font-style: $font-style;
+    font-weight: $font-weight;
+    src: url($font-url) format('woff2');
+  }
+}
+
+@include font('Neucha', normal, 400, './assets/fonts/Neucha-Regular.ttf');
+@include font('PTSansNarrow', normal, 400, './assets/fonts/PTSansNarrow-Regular.ttf');
+@include font('Ubuntu', normal, 300, './assets/fonts/Ubuntu-Regular.ttf');
+@include font('Ubuntu', normal, 700, './assets/fonts/Ubuntu-Bold.ttf');
+
