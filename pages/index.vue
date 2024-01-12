@@ -4,14 +4,26 @@ import { computed } from 'vue'
 import VSushiList from '~/components/VSushiFilter.vue'
 import VTitile from '~/components/ui/VTitile.vue'
 import VSushiCard from '~/components/VSushiCard.vue'
+import { ref, useMeta, defineComponent } from '@nuxtjs/composition-api'
 
 const store = useStore()
 const sushiList = computed(() => store.getters.getSushiList)
+const title = ref('Меню')
+
+useMeta(() => ({
+  title: title.value
+}))
+</script>
+
+<script>
+export default defineComponent({
+  head: {}
+})
 </script>
 
 <template>
   <div class="container">
-    <VTitile>Меню</VTitile>
+    <VTitile>{{ title }}</VTitile>
     <VSushiList />
     <div class="sushi-list">
       <div

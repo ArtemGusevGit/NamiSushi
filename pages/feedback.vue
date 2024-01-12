@@ -1,11 +1,22 @@
 <script setup>
 import VTitile from '~/components/ui/VTitile.vue'
+import { ref, useMeta, defineComponent } from '@nuxtjs/composition-api'
+const title = ref('Отзывы')
 
+useMeta(() => ({
+  title: title.value
+}))
+</script>
+
+<script>
+export default defineComponent({
+  head: {}
+})
 </script>
 
 <template>
   <div class="container">
-    <VTitile>Отзывы</VTitile>
-    <div>Читайте, что говорят о нас наши довольные клиенты - у нас даже коты радуются каждому отзыву! 🐾🌟</div>
+    <VTitile>{{ title }}</VTitile>
+    <div>Читайте, что говорят о нас наши довольные клиенты! 🐾🌟</div>
   </div>
 </template>
