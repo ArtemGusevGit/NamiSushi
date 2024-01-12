@@ -68,7 +68,8 @@ const changeFavoriteStatus = (index) => {
           v-else
           class="basket-list"
         >
-          <div
+          <TransitionGroup name="home">
+            <div
             v-for="sushi in sushiListBascet"
             :key="sushi.id"
             class="sushi-item"
@@ -130,7 +131,9 @@ const changeFavoriteStatus = (index) => {
               class="delete-icon"
               @click="removeAllSushiFromBasketById(sushi.id)"
             >
-          </div>
+            </div>
+          </TransitionGroup>
+
         </div>
         <div
           v-if="sushiListBascet.length"
@@ -266,6 +269,7 @@ const changeFavoriteStatus = (index) => {
   top: 3px;
   left: 150px;
   z-index: 999;
+  cursor: pointer;
 
   @include media-breakpoint-down(sm) {
     display: none;
@@ -348,4 +352,14 @@ const changeFavoriteStatus = (index) => {
     flex-direction: column;
   }
 }
+
+.home-enter-active, .home-leave-active {
+  transition: all 0.5s ease;
+}
+
+.home-enter, .home-leave-active {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
 </style>

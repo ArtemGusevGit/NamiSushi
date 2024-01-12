@@ -19,6 +19,7 @@ const totalCostInBasket = computed(() => store.getters.getTotalCostInBasket)
 const toggleSidebar = () => {
   store.commit('toggleSidebar')
   store.commit('toggleOrderingMenu')
+  store.commit('clearBasket')
 }
 
 const onSubmit = async () => {
@@ -86,39 +87,42 @@ const onSubmit = async () => {
         <form class="order-form" @submit.prevent="handleSubmit(onSubmit)">
           <ValidationProvider
             name="Имя"
-            v-slot="{ errors }"
+            v-slot="{ errors, valid }"
             rules="required|max:25"
           >
             <VInput
               v-model="name"
               placeholder="Имя"
               type="text"
+              :valid="valid"
               :inputIcon="userIcon"
               :error-message="errors"
             />
           </ValidationProvider>
           <ValidationProvider
             name="Телефон"
-            v-slot="{ errors }"
+            v-slot="{ errors, valid }"
             rules="required|numeric|max:12"
           >
             <VInput
               v-model="phone"
               placeholder="Телефон"
               type="text"
+              :valid="valid"
               :inputIcon="phoneIcon"
               :error-message="errors"
             />
           </ValidationProvider>
           <ValidationProvider
             name="Дополнительная информация"
-            v-slot="{ errors }"
+            v-slot="{ errors, valid }"
             rules="max:150"
           >
             <VInput
               v-model="info"
               placeholder="Дополнительная информация"
               type="text"
+              :valid="valid"
               :inputIcon="infoIcon"
               :error-message="errors"
             />

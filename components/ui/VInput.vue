@@ -1,11 +1,14 @@
 
 <script setup>
+import { useField } from 'vee-validate'
 const props = defineProps({
   label:String,
   placeholder: String,
   errorMessage: Array,
   type: String,
-  inputIcon: String
+  inputIcon: String,
+  name: String,
+  valid: Boolean,
 })
 
 const emit = defineEmits()
@@ -14,7 +17,10 @@ const updateValue = (event) => emit("input", event.target.value)
 
 <template>
   <div class="custom-input">
-    <div class="input-wrapper">
+    <div
+      class="input-wrapper"
+      :class="{ error: !valid && errorMessage.length}"
+    >
       <img
         class="input-icon"
         :src="inputIcon"
@@ -77,6 +83,10 @@ input {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #D9D9D9;
+}
+
+.error {
+  border-bottom: 1px solid #F00;
 }
 
 .input-icon {

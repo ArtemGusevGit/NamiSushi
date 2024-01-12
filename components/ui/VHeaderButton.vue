@@ -44,6 +44,11 @@ button {
   transition: $transition-base;
   border: none;
   position: relative;
+
+  &:hover {
+    background-color: $primary;
+    color: $white;
+  }
 }
 
 .rounded {
@@ -53,6 +58,7 @@ button {
 .icon {
   padding: 0.56rem;
 }
+
 
 .secondary {
   background-color: $secondary;

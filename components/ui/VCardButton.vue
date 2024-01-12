@@ -35,6 +35,10 @@ button {
   border-radius: 0.5rem;
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.35);
   border: none;
+
+  &:hover {
+    font-weight: bold;
+  }
 }
 
 .bg-white {

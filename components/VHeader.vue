@@ -8,7 +8,7 @@ import VMobileMenu from '~/components/ui/VMobileMenu.vue'
 import namiLogo from '~/assets/images/nami-logo.png'
 import namiMobileLogo from '~/assets/images/nami-mobile-logo.png'
 import phoneIcon from '~/assets/icons/phone-icon.svg'
-import basketIcon from '~/assets/icons/bucket-icon.svg'
+import basketIcon from '~/assets/icons/basket-icon.svg'
 
 const store = useStore()
 const sushiListBascet = computed(() => store.getters.getSushiBusketList)
@@ -178,6 +178,11 @@ header {
   align-items: center;
   gap: 0.4rem;
   font-size: 1.125rem;
+  transition: $transition-base;
+
+  &:hover {
+    color: $primary;
+  }
 
   & span {
     @include media-breakpoint-down(sm) {

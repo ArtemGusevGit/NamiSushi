@@ -320,5 +320,13 @@ export const mutations = {
       sushiItem.count = 0
       sushiItem.addToBascet = false
     }
+  },
+
+  clearBasket(state) {
+    state.sushiListBasket = [];
+    state.sushiList.forEach((sushiItem) => {
+      sushiItem.count = 0;
+      sushiItem.addToBascet = false;
+    });
   }
 }
