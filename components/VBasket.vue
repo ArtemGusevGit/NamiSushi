@@ -9,13 +9,10 @@ import fovoriteDisabledIcon from '~/assets/icons/favorite-icon.svg'
 import removeIcon from '~/assets/icons/remove-icon.svg'
 import addIcon from '~/assets/icons/add-icon.svg'
 import deleteIcon from '~/assets/icons/delete-icon.png'
-import VOrder from '~/components/VOrder.vue'
 
 const store = useStore()
-const isSidebarOpen = computed(() => store.getters.getSidebarStatus)
 const sushiListBascet = computed(() => store.getters.getSushiBusketList)
 const totalCostInBasket = computed(() => store.getters.getTotalCostInBasket)
-const isOrderingMenuOpen = computed(() => store.getters.getOrderingMenuStatus)
 
 const toggleSidebar = () => {
   store.commit('toggleSidebar')
@@ -44,127 +41,106 @@ const changeFavoriteStatus = (index) => {
 
 <template>
   <div>
+    <VTitile>Корзина</VTitile>
     <div
-      class="blur-overlay"
-      :class="{'open': isSidebarOpen}"
-      @click="toggleSidebar"
-    />
-    <div
-      class="sidebar"
-      :class="{'open': isSidebarOpen}"
+      v-if="!sushiListBascet.length"
+      class="basket-list"
     >
-      <div
-        v-if="!isOrderingMenuOpen"
-        class="basket"
+      Ваша корзина пуста 🙄
+    </div>
+    <div
+      v-else
+      class="basket-list"
+    >
+      <TransitionGroup name="home">
+        <div
+        v-for="sushi in sushiListBascet"
+        :key="sushi.id"
+        class="sushi-item"
       >
-        <VTitile>Корзина</VTitile>
-        <div
-          v-if="!sushiListBascet.length"
-          class="basket-list"
-        >
-          Ваша корзина пуста 🙄
-        </div>
-        <div
-          v-else
-          class="basket-list"
-        >
-          <TransitionGroup name="home">
-            <div
-            v-for="sushi in sushiListBascet"
-            :key="sushi.id"
-            class="sushi-item"
+        <div class="flex">
+          <img
+            :src="sushi.img"
+            alt="sushiImg"
+            class="sushi-img"
           >
-            <div class="flex">
-              <img
-                :src="sushi.img"
-                alt="sushiImg"
-                class="sushi-img"
-              >
-              <div class="sushi-item__desc">
-                <img
-                  class="sushi-icon"
-                  alt="fovoriteIcon"
-                  :src="sushi.favorite? fovoriteIcon : fovoriteDisabledIcon"
-                  @click="changeFavoriteStatus(sushi.id)"
-                >
-                <span class="sushi-title">{{ sushi.name }}</span>
-                <span>{{ sushi.description }}</span>
-                <span>({{ sushi.weight }} г)</span>
-              </div>
-            </div>
-            <div class="sushi-item__actions">
-              <div><span class="basket-font">Цена</span> {{ sushi.cost }} &#8381</div>
-              <div class="sushi-counter">
-                <VHeaderBtn
-                  rounded
-                  icon
-                  secondary
-                  @click="removeSushiFromBuscet(sushi.id)"
-                >
-                  <img
-                    class="sushi-counter__icon"
-                    :src="removeIcon"
-                    alt="removeIcon"
-                  >
-                </VHeaderBtn>
-                <span>
-                  {{ sushi.count }}
-                </span>
-                <VHeaderBtn
-                  rounded
-                  icon
-                  secondary
-                  @click="addSushiToBascet(sushi.id)"
-                >
-                  <img
-                    class="sushi-counter__icon"
-                    :src="addIcon"
-                    alt="removeIcon"
-                  >
-                </VHeaderBtn>
-              </div>
-              <div>
-                <span class="basket-font">Сумма</span>
-                {{ sushi.count * sushi.cost }} &#8381
-              </div>
-            </div>
+          <div class="sushi-item__desc">
             <img
-              :src="deleteIcon"
-              alt="deleteIcon"
-              class="delete-icon"
-              @click="removeAllSushiFromBasketById(sushi.id)"
+              class="sushi-icon"
+              alt="fovoriteIcon"
+              :src="sushi.favorite? fovoriteIcon : fovoriteDisabledIcon"
+              @click="changeFavoriteStatus(sushi.id)"
             >
-            </div>
-          </TransitionGroup>
+            <span class="sushi-title">{{ sushi.name }}</span>
+            <span>{{ sushi.description }}</span>
+            <span>({{ sushi.weight }} г)</span>
+          </div>
         </div>
-        <div
-          v-if="sushiListBascet.length"
-          class="total"
+        <div class="sushi-item__actions">
+          <div><span class="basket-font">Цена</span> {{ sushi.cost }} &#8381</div>
+          <div class="sushi-counter">
+            <VHeaderBtn
+              rounded
+              icon
+              secondary
+              @click="removeSushiFromBuscet(sushi.id)"
+            >
+              <img
+                class="sushi-counter__icon"
+                :src="removeIcon"
+                alt="removeIcon"
+              >
+            </VHeaderBtn>
+            <span>
+              {{ sushi.count }}
+            </span>
+            <VHeaderBtn
+              rounded
+              icon
+              secondary
+              @click="addSushiToBascet(sushi.id)"
+            >
+              <img
+                class="sushi-counter__icon"
+                :src="addIcon"
+                alt="removeIcon"
+              >
+            </VHeaderBtn>
+          </div>
+          <div>
+            <span class="basket-font">Сумма</span>
+            {{ sushi.count * sushi.cost }} &#8381
+          </div>
+        </div>
+        <img
+          :src="deleteIcon"
+          alt="deleteIcon"
+          class="delete-icon"
+          @click="removeAllSushiFromBasketById(sushi.id)"
         >
-          <span>Общая сумма {{ totalCostInBasket }} &#8381</span>
-          <p>Сумма заказа для доставки курьером должна составлять не менее 500 ₽</p>
         </div>
-        <div class="basket-btns">
-          <VCardBtn
-            white
-            @click="toggleSidebar"
-          >
-            Вернуться к попкупкам
-          </VCardBtn>
-          <VCardBtn
-            v-if="sushiListBascet.length"
-            @click="toggleOrderingMenu"
-          >
-            Оформить заказ
-          </VCardBtn>
-        </div>
-      </div>
-      <div
-        v-else
-        class="ordering"
+      </TransitionGroup>
+    </div>
+    <div
+      v-if="sushiListBascet.length"
+      class="total"
+    >
+      <span>Общая сумма {{ totalCostInBasket }} &#8381</span>
+      <p>Сумма заказа для доставки курьером должна составлять не менее 500 ₽</p>
+    </div>
+    <div class="basket-btns">
+      <VCardBtn
+        white
+        @click="toggleSidebar"
       >
-        <VOrder />
-      </div>
+        Вернуться к попкупкам
+      </VCardBtn>
+      <VCardBtn
+        v-if="sushiListBascet.length"
+        @click="toggleOrderingMenu"
+      >
+        Оформить заказ
+      </VCardBtn>
     </div>
   </div>
 </template>

@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useStore } from '@nuxtjs/composition-api'
 import VHeaderBtn from '~/components/ui/VHeaderButton.vue'
-import VBasketDrawer from '~/components/ui/VBasketDrawer.vue'
+import VDrawer from '~/components/ui/VDrawer.vue'
 import VToggleVue from '~/components/ui/VToggle.vue'
 import VMobileMenu from '~/components/ui/VMobileMenu.vue'
 import namiLogo from '~/assets/images/nami-logo.png'
@@ -110,7 +110,7 @@ const toggleSidebar = () => {
       </div>
     </header>
     <VMobileMenu />
-    <VBasketDrawer />
+    <VDrawer />
   </div>
 </template>
 

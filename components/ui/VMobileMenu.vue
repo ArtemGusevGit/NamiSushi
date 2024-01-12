@@ -1,12 +1,19 @@
 <script setup>
 import { useStore } from '@nuxtjs/composition-api'
 import { computed } from 'vue'
+import VHeaderBtn from '~/components/ui/VHeaderButton.vue'
+import basketIcon from '~/assets/icons/basket-icon.svg'
 
 const store = useStore()
 const isMobileMenuOpen = computed(() => store.getters.getMobileMenuStatus)
+const sushiListBascet = computed(() => store.getters.getSushiBusketList)
 
 const toggleMobileMenu = () => {
   store.commit('toggleMobileMenu')
+}
+
+const toggleSidebar = () => {
+  store.commit('toggleSidebar')
 }
 </script>
 
@@ -56,6 +63,23 @@ const toggleMobileMenu = () => {
           Контакты
         </NuxtLink>
       </nav>
+      <div class="header-btns">
+        <VHeaderBtn
+          rounded
+          icon
+          @click="toggleSidebar"
+        >
+          <img
+            class="flex"
+            :src="basketIcon"
+            alt="basketIcon"
+          >
+          <div
+            v-if="sushiListBascet.length"
+            class="bascet-alert"
+          />
+        </VHeaderBtn>
+      </div>
     </div>
   </div>
 </template>
@@ -128,5 +152,25 @@ const toggleMobileMenu = () => {
 a.nuxt-link-exact-active {
   color: $primary;
   font-weight: bold;
+}
+
+.header-btns {
+  display: none;
+  margin-top: 1rem;
+
+  @include media-breakpoint-down(sm) {
+    display: flex;
+  }
+}
+
+.bascet-alert {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  top: 5px;
+  right: 8px;
+  border-radius: 1rem;
 }
 </style>
