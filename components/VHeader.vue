@@ -128,7 +128,7 @@ header {
 }
 
 .burger {
-  display: none;
+  display: none !important;
 
   @include media-breakpoint-down(xl) {
     display: flex;
