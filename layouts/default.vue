@@ -1,6 +1,6 @@
 <script setup>
-import VHeader from '~/components/VHeader.vue'
-import VFooter from '~/components/VFooter.vue'
+import VHeader from '~/components/VHeader.vue';
+import VFooter from '~/components/VFooter.vue';
 </script>
 
 <template>
@@ -22,5 +22,10 @@ import VFooter from '~/components/VFooter.vue'
   background-image: url('@/assets/images/BG-main.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+
+  @include media-breakpoint-down(md) {
+    background-repeat: repeat;
+    background-size: auto;
+  }
 }
 </style>

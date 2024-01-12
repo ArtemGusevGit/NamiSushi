@@ -1,37 +1,33 @@
 <script setup>
-import { computed } from 'vue'
-import { useStore } from '@nuxtjs/composition-api'
-import VHeaderBtn from '~/components/ui/VHeaderButton.vue'
-import VDrawer from '~/components/ui/VDrawer.vue'
-import VToggleVue from '~/components/ui/VToggle.vue'
-import VMobileMenu from '~/components/ui/VMobileMenu.vue'
-import namiLogo from '~/assets/images/nami-logo.png'
-import namiMobileLogo from '~/assets/images/nami-mobile-logo.png'
-import phoneIcon from '~/assets/icons/phone-icon.svg'
-import basketIcon from '~/assets/icons/basket-icon.svg'
-import VAuthDrawer from '~/components/ui/VAuthDrawer.vue'
+import { computed } from 'vue';
+import { useStore } from '@nuxtjs/composition-api';
+import VHeaderBtn from '~/components/ui/VHeaderButton.vue';
+import VDrawer from '~/components/ui/VDrawer.vue';
+import VToggleVue from '~/components/ui/VToggle.vue';
+import VMobileMenu from '~/components/ui/VMobileMenu.vue';
+import namiLogo from '~/assets/images/nami-logo.png';
+import namiMobileLogo from '~/assets/images/nami-mobile-logo.png';
+import phoneIcon from '~/assets/icons/phone-icon.svg';
+import basketIcon from '~/assets/icons/basket-icon.svg';
+import VAuthDrawer from '~/components/ui/VAuthDrawer.vue';
 
-const store = useStore()
-const sushiListBascet = computed(() => store.getters.getSushiBusketList)
+const store = useStore();
+const sushiListBascet = computed(() => store.getters.getSushiBusketList);
 
 const toggleSidebar = () => {
-  store.commit('toggleSidebar')
-}
+  store.commit('toggleSidebar');
+};
 
 const toggleAuthMenu = () => {
-  store.commit('toggleAuthMenu')
-}
+  store.commit('toggleAuthMenu');
+};
 </script>
 
 <template>
   <div>
     <header>
       <div class="relative container">
-        <img
-          class="header-logo"
-          :src="namiLogo"
-          alt="namiLgo"
-        >
+        <img class="header-logo" :src="namiLogo" alt="namiLgo" />
         <div class="header-actions">
           <div class="flex">
             <VToggleVue class="burger" />
@@ -39,37 +35,18 @@ const toggleAuthMenu = () => {
               class="header-logo__mobile"
               :src="namiMobileLogo"
               alt="namiMobileLogo"
-            >
+            />
           </div>
           <nav class="header-nav">
-            <NuxtLink
-              to="/"
-              class="header-nav__item"
-            >
-              Меню
-            </NuxtLink>
-            <NuxtLink
-              to="/delivery"
-              class="header-nav__item"
-            >
+            <NuxtLink to="/" class="header-nav__item"> Меню </NuxtLink>
+            <NuxtLink to="/delivery" class="header-nav__item">
               Доставка
             </NuxtLink>
-            <NuxtLink
-              to="/promotion"
-              class="header-nav__item"
-            >
+            <NuxtLink to="/promotion" class="header-nav__item">
               Акции
             </NuxtLink>
-            <NuxtLink
-              to="/feedback"
-              class="header-nav__item"
-            >
-              Отзыв
-            </NuxtLink>
-            <NuxtLink
-              to="/contacts"
-              class="header-nav__item"
-            >
+            <NuxtLink to="/feedback" class="header-nav__item"> Отзыв </NuxtLink>
+            <NuxtLink to="/contacts" class="header-nav__item">
               Контакты
             </NuxtLink>
           </nav>
@@ -77,38 +54,17 @@ const toggleAuthMenu = () => {
             class="header-logo__mobile-center"
             :src="namiMobileLogo"
             alt="namiMobileLogo"
-          >
-          <a
-            href="tel:+79797009791"
-            class="header-phone"
-          >
-            <img
-              :src="phoneIcon"
-              alt="phoneIcon"
-            >
+          />
+          <a href="tel:+79797009791" class="header-phone">
+            <img :src="phoneIcon" alt="phoneIcon" />
             <span>+7 979 700 97 91</span>
           </a>
           <div class="header-btns">
-            <VHeaderBtn
-              rounded
-              icon
-              @click="toggleSidebar"
-            >
-              <img
-                class="flex"
-                :src="basketIcon"
-                alt="basketIcon"
-              >
-              <div
-                v-if="sushiListBascet.length"
-                class="bascet-alert"
-              />
+            <VHeaderBtn rounded icon @click="toggleSidebar">
+              <img class="flex" :src="basketIcon" alt="basketIcon" />
+              <div v-if="sushiListBascet.length" class="bascet-alert" />
             </VHeaderBtn>
-            <VHeaderBtn
-              rounded
-              class="login-btn"
-              @click="toggleAuthMenu"
-            >
+            <VHeaderBtn rounded class="login-btn" @click="toggleAuthMenu">
               Войти
             </VHeaderBtn>
           </div>
@@ -123,7 +79,7 @@ const toggleAuthMenu = () => {
 
 <style lang="scss" scoped>
 header {
-  background-color: #062D4E;
+  background-color: #062d4e;
   color: $white;
   padding: 2rem 0;
   position: fixed;
@@ -222,7 +178,7 @@ header {
   position: relative;
   color: $white;
 
-  &::after{
+  &::after {
     content: '';
     width: 3px;
     height: 3px;
@@ -239,7 +195,7 @@ header {
 }
 
 .bascet-alert {
-  content: "";
+  content: '';
   position: absolute;
   width: 8px;
   height: 8px;
@@ -251,8 +207,8 @@ header {
 
 .login-btn {
   @include media-breakpoint-down(sm) {
-      display: none;
-    }
+    display: none;
+  }
 }
 
 a.nuxt-link-exact-active {

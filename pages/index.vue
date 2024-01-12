@@ -1,24 +1,24 @@
 <script setup>
-import { useStore } from '@nuxtjs/composition-api'
-import { computed } from 'vue'
-import VSushiList from '~/components/VSushiFilter.vue'
-import VTitle from '~/components/ui/VTitle.vue'
-import VSushiCard from '~/components/VSushiCard.vue'
-import { ref, useMeta, defineComponent } from '@nuxtjs/composition-api'
+import { useStore } from '@nuxtjs/composition-api';
+import { computed } from 'vue';
+import VSushiList from '~/components/VSushiFilter.vue';
+import VTitle from '~/components/ui/VTitle.vue';
+import VSushiCard from '~/components/VSushiCard.vue';
+import { ref, useMeta, defineComponent } from '@nuxtjs/composition-api';
 
-const store = useStore()
-const sushiList = computed(() => store.getters.getSushiList)
-const title = ref('Меню')
+const store = useStore();
+const sushiList = computed(() => store.getters.getSushiList);
+const title = ref('Меню');
 
 useMeta(() => ({
-  title: title.value
-}))
+  title: title.value,
+}));
 </script>
 
 <script>
 export default defineComponent({
-  head: {}
-})
+  head: {},
+});
 </script>
 
 <template>
@@ -26,10 +26,7 @@ export default defineComponent({
     <VTitle>{{ title }}</VTitle>
     <VSushiList />
     <div class="sushi-list">
-      <div
-        v-for="sushi, index in sushiList"
-        :key="index"
-      >
+      <div v-for="(sushi, index) in sushiList" :key="index">
         <VSushiCard
           :id="sushi.id"
           :name="sushi.name"
@@ -59,5 +56,4 @@ export default defineComponent({
   flex-wrap: wrap;
   justify-content: center;
 }
-
 </style>

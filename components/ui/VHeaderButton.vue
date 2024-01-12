@@ -1,33 +1,27 @@
 <script setup>
-
 const props = defineProps({
   rounded: {
     type: Boolean,
-    required: false
+    required: false,
   },
   icon: {
     type: Boolean,
-    required: false
+    required: false,
   },
   secondary: {
     type: Boolean,
-    required: false
-  }
-})
+    required: false,
+  },
+});
 
+const emit = defineEmits();
 
-const emit = defineEmits()
-
-const handleClick = () => emit('click')
+const handleClick = () => emit("click");
 </script>
 
 <template>
   <button
-    :class="[
-      { rounded: rounded },
-      { icon: icon },
-      { secondary: secondary }
-    ]"
+    :class="[{ rounded: rounded }, { icon: icon }, { secondary: secondary }]"
     @click="handleClick"
   >
     <slot />
@@ -58,7 +52,6 @@ button {
 .icon {
   padding: 0.56rem;
 }
-
 
 .secondary {
   background-color: $secondary;

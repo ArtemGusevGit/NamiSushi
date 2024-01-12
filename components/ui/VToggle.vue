@@ -1,13 +1,13 @@
 <script setup>
-import {  computed } from 'vue'
-import { useStore } from '@nuxtjs/composition-api'
+import { computed } from "vue";
+import { useStore } from "@nuxtjs/composition-api";
 
-const store = useStore()
-const isMobileMenuOpen = computed(() => store.getters.getMobileMenuStatus)
+const store = useStore();
+const isMobileMenuOpen = computed(() => store.getters.getMobileMenuStatus);
 
 const toggleMobileMenu = () => {
-  store.commit('toggleMobileMenu')
-}
+  store.commit("toggleMobileMenu");
+};
 </script>
 <template>
   <div
@@ -56,7 +56,7 @@ $mobile-menu-toggle-padding: 0.5rem;
       backface-visibility: hidden;
       background-color: $white;
       border-radius: 2px;
-      content: '';
+      content: "";
       height: 2px;
       left: 0;
       position: absolute;

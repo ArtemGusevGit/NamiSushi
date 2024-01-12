@@ -2,21 +2,25 @@
 const props = defineProps({
   white: {
     type: Boolean,
-    required: false
+    required: false,
   },
+  type: String,
   fullWidth: Boolean,
   orderBtn: Boolean,
-})
+});
 
-
-const emit = defineEmits()
-const handleClick = () => emit('click')
-
+const emit = defineEmits();
+const handleClick = () => emit('click');
 </script>
 
 <template>
   <button
-    :class="{'bg-white':white, 'full-width':fullWidth, 'order-btn': orderBtn}"
+    :type="type"
+    :class="{
+      'bg-white': white,
+      'full-width': fullWidth,
+      'order-btn': orderBtn,
+    }"
     @click="handleClick"
   >
     <slot />
@@ -51,7 +55,7 @@ button {
 }
 .order-btn {
   border-radius: 0.5rem;
-  border: 1px solid #0C334A;
-  background: #0C334A;
+  border: 1px solid #0c334a;
+  background: #0c334a;
 }
 </style>

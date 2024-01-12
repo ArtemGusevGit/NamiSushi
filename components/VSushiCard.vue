@@ -1,96 +1,85 @@
 <script setup>
-import { useStore } from '@nuxtjs/composition-api'
-import VCardBtn from '~/components/ui/VCardButton.vue'
-import VHeaderBtn from '~/components/ui/VHeaderButton.vue'
-import fovoriteIcon from '~/assets/icons/favorite-active-icon.svg'
-import fovoriteDisabledIcon from '~/assets/icons/favorite-icon.svg'
-import removeIcon from '~/assets/icons/remove-icon.svg'
-import addIcon from '~/assets/icons/add-icon.svg'
+import { useStore } from '@nuxtjs/composition-api';
+import VCardBtn from '~/components/ui/VCardButton.vue';
+import VHeaderBtn from '~/components/ui/VHeaderButton.vue';
+import fovoriteIcon from '~/assets/icons/favorite-active-icon.svg';
+import fovoriteDisabledIcon from '~/assets/icons/favorite-icon.svg';
+import removeIcon from '~/assets/icons/remove-icon.svg';
+import addIcon from '~/assets/icons/add-icon.svg';
 
 const props = defineProps({
   id: {
     type: Number,
-    required: true
+    required: true,
   },
   name: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
-    required: true
+    required: true,
   },
   weigth: {
     type: String,
-    required: true
+    required: true,
   },
   cost: {
     type: String,
-    required: true
+    required: true,
   },
   img: {
     type: String,
-    required: true
+    required: true,
   },
   isFavorite: {
     type: Boolean,
-    required: true
+    required: true,
   },
   isInBasket: {
     type: Boolean,
-    required: true
+    required: true,
   },
   count: {
     type: Number,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
-const store = useStore()
+const store = useStore();
 
 const changeFavoriteStatus = (index) => {
-  store.commit('toggleFavoriteSushiById', index)
-}
+  store.commit('toggleFavoriteSushiById', index);
+};
 
 const addSushiToBascet = (index) => {
-  store.commit('addSushiToBasketById', index)
-}
+  store.commit('addSushiToBasketById', index);
+};
 
 const removeSushiFromBuscet = (index) => {
-  store.commit('removeSushiFromBasketById', index)
-}
-
+  store.commit('removeSushiFromBasketById', index);
+};
 </script>
 
 <template>
-  <div
-    class="sushi-card"
-    :class="{'sushi-card__basket': isInBasket}"
-  >
-    <div
-      class="sushi-card__icon"
-      @click="changeFavoriteStatus(id)"
-    >
+  <div class="sushi-card" :class="{ 'sushi-card__basket': isInBasket }">
+    <div class="sushi-card__icon" @click="changeFavoriteStatus(id)">
       <img
         v-if="isFavorite"
         alt="fovoriteIcon"
         :src="fovoriteIcon"
         :class="{ 'fill-white': isInBasket }"
-      >
+      />
       <img
         v-else
         :src="fovoriteDisabledIcon"
         alt="fovoriteIcon"
         :style="{ filter: isInBasket ? 'invert(1)' : 'none' }"
-      >
+      />
     </div>
     <div class="relative sushi-img-container">
-      <img
-        class="sushi-card__img"
-        :src="img"
-        :alt="name"
-      >
-      <div :class="{'shadow': isInBasket}" />
+      <img class="sushi-card__img" :src="img" :alt="name" />
+      <div :class="{ shadow: isInBasket }" />
     </div>
     <div class="relative">
       <span class="sushi-card__name">{{ name }}</span>
@@ -98,41 +87,24 @@ const removeSushiFromBuscet = (index) => {
     </div>
     <span
       class="sushi-card__desc"
-      :class="{'sushi-card__basket': isInBasket}"
-    >{{ description }}</span>
+      :class="{ 'sushi-card__basket': isInBasket }"
+    >
+      {{ description }}
+    </span>
     <div class="card-actions">
       <span class="sushi-card__cost">{{ cost }} &#8381</span>
-      <VCardBtn
-        v-if="!count"
-        @click="addSushiToBascet(id)"
-      >
+      <VCardBtn v-if="!count" @click="addSushiToBascet(id)">
         В корзину
       </VCardBtn>
       <div v-else>
-        <VHeaderBtn
-          rounded
-          icon
-          @click="addSushiToBascet(id)"
-        >
-          <img
-            class="flex"
-            :src="addIcon"
-            alt="removeIcon"
-          >
+        <VHeaderBtn rounded icon @click="addSushiToBascet(id)">
+          <img class="flex" :src="addIcon" alt="removeIcon" />
         </VHeaderBtn>
         <span class="sushi-count">
           {{ count }}
         </span>
-        <VHeaderBtn
-          rounded
-          icon
-          @click="removeSushiFromBuscet(id)"
-        >
-          <img
-            class="flex"
-            :src="removeIcon"
-            alt="removeIcon"
-          >
+        <VHeaderBtn rounded icon @click="removeSushiFromBuscet(id)">
+          <img class="flex" :src="removeIcon" alt="removeIcon" />
         </VHeaderBtn>
       </div>
     </div>
@@ -142,7 +114,7 @@ const removeSushiFromBuscet = (index) => {
 <style lang="scss" scoped>
 .sushi-card {
   border-radius: 8px;
-  background: #FAFAFA;
+  background: #fafafa;
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.25);
   padding: 1.87rem;
   display: flex;
@@ -210,7 +182,7 @@ const removeSushiFromBuscet = (index) => {
 
 .shadow {
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 80px;
     right: 80px;

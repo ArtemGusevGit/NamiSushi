@@ -1,12 +1,12 @@
 <script setup>
-import { ref } from 'vue'
-import { sushiItems } from '~/shared/consts'
+import { ref } from 'vue';
+import { sushiItems } from '~/shared/consts';
 
-const activeItem = ref(0)
+const activeItem = ref(0);
 
 const setActiveItem = (index) => {
-  activeItem.value = index
-}
+  activeItem.value = index;
+};
 </script>
 
 <template>
@@ -15,7 +15,7 @@ const setActiveItem = (index) => {
       v-for="(item, index) in sushiItems"
       :key="index"
       class="sushi-filter__item"
-      :class="{ 'active': activeItem === index }"
+      :class="{ active: activeItem === index }"
       @click="setActiveItem(index)"
     >
       {{ item }}

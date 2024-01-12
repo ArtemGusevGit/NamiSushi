@@ -1,17 +1,17 @@
 <script setup>
-import VTitle from '~/components/ui/VTitle.vue'
-import { ref, useMeta, defineComponent } from '@nuxtjs/composition-api'
-const title = ref('Доставка')
+import VTitle from '~/components/ui/VTitle.vue';
+import { ref, useMeta, defineComponent } from '@nuxtjs/composition-api';
+const title = ref('Доставка');
 
 useMeta(() => ({
-  title: title.value
-}))
+  title: title.value,
+}));
 </script>
 
 <script>
 export default defineComponent({
-  head: {}
-})
+  head: {},
+});
 </script>
 
 <template>

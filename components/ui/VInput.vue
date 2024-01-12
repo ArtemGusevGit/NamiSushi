@@ -1,35 +1,26 @@
-
 <script setup>
 const props = defineProps({
-  label:String,
+  label: String,
   placeholder: String,
   errorMessage: Array,
   type: String,
   inputIcon: String,
   name: String,
   valid: Boolean,
-})
+});
 
-const emit = defineEmits()
-const updateValue = (event) => emit("input", event.target.value)
+const emit = defineEmits();
+const updateValue = (event) => emit("input", event.target.value);
 </script>
 
 <template>
   <div class="custom-input">
     <div
       class="input-wrapper"
-      :class="{ error: !valid && errorMessage.length}"
+      :class="{ error: !valid && errorMessage.length }"
     >
-      <img
-        class="input-icon"
-        :src="inputIcon"
-        :alt="inputIcon"
-      >
-      <input
-        type="type"
-        :placeholder="placeholder"
-        @input="updateValue"
-      />
+      <img class="input-icon" :src="inputIcon" :alt="inputIcon" />
+      <input type="type" :placeholder="placeholder" @input="updateValue" />
     </div>
 
     <div v-if="errorMessage">
@@ -57,7 +48,7 @@ input {
   }
 
   &::placeholder {
-    color: #4C4C4C;
+    color: #4c4c4c;
     font-family: Ubuntu;
     font-size: 16px;
     font-weight: 300;
@@ -71,7 +62,7 @@ input {
   margin-top: 24px;
 
   &__error {
-    color: #F00;
+    color: #f00;
     margin-top: 0.5rem;
     margin-right: 4rem;
     font-family: Ubuntu, sans-serif;
@@ -83,11 +74,11 @@ input {
 .input-wrapper {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #D9D9D9;
+  border-bottom: 1px solid #d9d9d9;
 }
 
 .error {
-  border-bottom: 1px solid #F00;
+  border-bottom: 1px solid #f00;
 }
 
 .input-icon {

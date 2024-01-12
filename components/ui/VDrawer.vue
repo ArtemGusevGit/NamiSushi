@@ -1,29 +1,26 @@
 <script setup>
-import { useStore } from '@nuxtjs/composition-api'
-import { computed } from 'vue'
-import VOrder from '~/components/VOrder.vue'
-import VBasket from '~/components/VBasket.vue'
+import { useStore } from "@nuxtjs/composition-api";
+import { computed } from "vue";
+import VOrder from "~/components/VOrder.vue";
+import VBasket from "~/components/VBasket.vue";
 
-const store = useStore()
-const isSidebarOpen = computed(() => store.getters.getSidebarStatus)
-const isOrderingMenuOpen = computed(() => store.getters.getOrderingMenuStatus)
+const store = useStore();
+const isSidebarOpen = computed(() => store.getters.getSidebarStatus);
+const isOrderingMenuOpen = computed(() => store.getters.getOrderingMenuStatus);
 
 const toggleSidebar = () => {
-  store.commit('toggleSidebar')
-}
+  store.commit("toggleSidebar");
+};
 </script>
 
 <template>
   <div>
     <div
       class="blur-overlay"
-      :class="{'open': isSidebarOpen}"
+      :class="{ open: isSidebarOpen }"
       @click="toggleSidebar"
     />
-    <div
-      class="sidebar"
-      :class="{'open': isSidebarOpen}"
-    >
+    <div class="sidebar" :class="{ open: isSidebarOpen }">
       <div v-if="!isOrderingMenuOpen">
         <VBasket />
       </div>
@@ -39,7 +36,7 @@ const toggleSidebar = () => {
   right: 0;
   height: 100%;
   width: 38.3rem;
-  background-color: #EBE1D7;
+  background-color: #ebe1d7;
   color: $secondary;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
@@ -49,7 +46,7 @@ const toggleSidebar = () => {
   overflow-y: scroll;
 
   @include media-breakpoint-down(md) {
-    width: 100%
+    width: 100%;
   }
 
   @include media-breakpoint-down(sm) {
@@ -73,7 +70,7 @@ const toggleSidebar = () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(60, 75, 97, 0.60);
+  background: rgba(60, 75, 97, 0.6);
   backdrop-filter: blur(11px);
   opacity: 0;
   z-index: 9998;

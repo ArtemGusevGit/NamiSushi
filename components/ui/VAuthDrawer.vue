@@ -1,28 +1,25 @@
 <script setup>
-import { useStore } from '@nuxtjs/composition-api'
-import { computed } from 'vue'
-import VTitle from '~/components/ui/VTitle.vue'
-import VCardBtn from '~/components/ui/VCardButton.vue'
+import { useStore } from '@nuxtjs/composition-api';
+import { computed } from 'vue';
+import VTitle from '~/components/ui/VTitle.vue';
+import VCardBtn from '~/components/ui/VCardButton.vue';
 
-const store = useStore()
-const isAuthMenuOpen = computed(() => store.getters.getAuthMenuStatus)
+const store = useStore();
+const isAuthMenuOpen = computed(() => store.getters.getAuthMenuStatus);
 
 const toggleAuthMenu = () => {
-  store.commit('toggleAuthMenu')
-}
+  store.commit('toggleAuthMenu');
+};
 </script>
 
 <template>
   <div>
     <div
       class="blur-overlay"
-      :class="{'open': isAuthMenuOpen}"
+      :class="{ open: isAuthMenuOpen }"
       @click="toggleAuthMenu"
     />
-    <div
-      class="sidebar"
-      :class="{'open': isAuthMenuOpen}"
-    >
+    <div class="sidebar" :class="{ open: isAuthMenuOpen }">
       <div class="auth-menu">
         <VTitle>Вход</VTitle>
         <div>Эта страница предназначена для авторизации 🥅</div>
@@ -39,7 +36,7 @@ const toggleAuthMenu = () => {
   right: 0;
   height: 100%;
   width: 28rem;
-  background-color: #EBE1D7;
+  background-color: #ebe1d7;
   color: $secondary;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
@@ -49,7 +46,7 @@ const toggleAuthMenu = () => {
   overflow-y: scroll;
 
   @include media-breakpoint-down(md) {
-    width: 100%
+    width: 100%;
   }
 }
 
@@ -69,7 +66,7 @@ const toggleAuthMenu = () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(60, 75, 97, 0.60);
+  background: rgba(60, 75, 97, 0.6);
   backdrop-filter: blur(11px);
   opacity: 0;
   z-index: 9998;
