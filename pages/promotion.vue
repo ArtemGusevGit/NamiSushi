@@ -1,5 +1,5 @@
 <script setup>
-import VTitile from '~/components/ui/VTitile.vue'
+import VTitle from '~/components/ui/VTitle.vue'
 import { ref, useMeta, defineComponent } from '@nuxtjs/composition-api'
 const title = ref('Акции')
 
@@ -16,7 +16,7 @@ export default defineComponent({
 
 <template>
   <div class="container">
-    <VTitile>{{ title }}</VTitile>
+    <VTitle>{{ title }}</VTitle>
     <div>Не пропустите нашу акцию - смех и скидки гарантированы! 😄🎉</div>
   </div>
 </template>

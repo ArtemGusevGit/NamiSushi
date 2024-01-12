@@ -1,15 +1,14 @@
 <script setup>
 import { useStore } from '@nuxtjs/composition-api'
 import { computed } from 'vue'
-import VOrder from '~/components/VOrder.vue'
-import VBasket from '~/components/VBasket.vue'
+import VTitle from '~/components/ui/VTitle.vue'
+import VCardBtn from '~/components/ui/VCardButton.vue'
 
 const store = useStore()
-const isSidebarOpen = computed(() => store.getters.getSidebarStatus)
-const isOrderingMenuOpen = computed(() => store.getters.getOrderingMenuStatus)
+const isAuthMenuOpen = computed(() => store.getters.getAuthMenuStatus)
 
-const toggleSidebar = () => {
-  store.commit('toggleSidebar')
+const toggleAuthMenu = () => {
+  store.commit('toggleAuthMenu')
 }
 </script>
 
@@ -17,17 +16,18 @@ const toggleSidebar = () => {
   <div>
     <div
       class="blur-overlay"
-      :class="{'open': isSidebarOpen}"
-      @click="toggleSidebar"
+      :class="{'open': isAuthMenuOpen}"
+      @click="toggleAuthMenu"
     />
     <div
       class="sidebar"
-      :class="{'open': isSidebarOpen}"
+      :class="{'open': isAuthMenuOpen}"
     >
-      <div v-if="!isOrderingMenuOpen">
-        <VBasket />
+      <div class="auth-menu">
+        <VTitle>Вход</VTitle>
+        <div>Эта страница предназначена для авторизации 🥅</div>
+        <VCardBtn @click="toggleAuthMenu">Вернуться на главную</VCardBtn>
       </div>
-      <VOrder v-else />
     </div>
   </div>
 </template>
@@ -38,7 +38,7 @@ const toggleSidebar = () => {
   top: 0;
   right: 0;
   height: 100%;
-  width: 38.3rem;
+  width: 28rem;
   background-color: #EBE1D7;
   color: $secondary;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
@@ -50,10 +50,6 @@ const toggleSidebar = () => {
 
   @include media-breakpoint-down(md) {
     width: 100%
-  }
-
-  @include media-breakpoint-down(sm) {
-    padding: 0.5rem;
   }
 }
 
@@ -81,5 +77,12 @@ const toggleSidebar = () => {
 
 .blur-overlay.open {
   opacity: 1;
+}
+
+.auth-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
 }
 </style>

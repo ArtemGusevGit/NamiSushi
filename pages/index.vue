@@ -2,7 +2,7 @@
 import { useStore } from '@nuxtjs/composition-api'
 import { computed } from 'vue'
 import VSushiList from '~/components/VSushiFilter.vue'
-import VTitile from '~/components/ui/VTitile.vue'
+import VTitle from '~/components/ui/VTitle.vue'
 import VSushiCard from '~/components/VSushiCard.vue'
 import { ref, useMeta, defineComponent } from '@nuxtjs/composition-api'
 
@@ -23,7 +23,7 @@ export default defineComponent({
 
 <template>
   <div class="container">
-    <VTitile>{{ title }}</VTitile>
+    <VTitle>{{ title }}</VTitle>
     <VSushiList />
     <div class="sushi-list">
       <div

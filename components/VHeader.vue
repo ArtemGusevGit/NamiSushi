@@ -9,12 +9,17 @@ import namiLogo from '~/assets/images/nami-logo.png'
 import namiMobileLogo from '~/assets/images/nami-mobile-logo.png'
 import phoneIcon from '~/assets/icons/phone-icon.svg'
 import basketIcon from '~/assets/icons/basket-icon.svg'
+import VAuthDrawer from '~/components/ui/VAuthDrawer.vue'
 
 const store = useStore()
 const sushiListBascet = computed(() => store.getters.getSushiBusketList)
 
 const toggleSidebar = () => {
   store.commit('toggleSidebar')
+}
+
+const toggleAuthMenu = () => {
+  store.commit('toggleAuthMenu')
 }
 </script>
 
@@ -102,6 +107,7 @@ const toggleSidebar = () => {
             <VHeaderBtn
               rounded
               class="login-btn"
+              @click="toggleAuthMenu"
             >
               Войти
             </VHeaderBtn>
@@ -111,6 +117,7 @@ const toggleSidebar = () => {
     </header>
     <VMobileMenu />
     <VDrawer />
+    <VAuthDrawer />
   </div>
 </template>
 

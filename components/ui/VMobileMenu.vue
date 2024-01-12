@@ -2,7 +2,6 @@
 import { useStore } from '@nuxtjs/composition-api'
 import { computed } from 'vue'
 import VHeaderBtn from '~/components/ui/VHeaderButton.vue'
-import basketIcon from '~/assets/icons/basket-icon.svg'
 
 const store = useStore()
 const isMobileMenuOpen = computed(() => store.getters.getMobileMenuStatus)
@@ -69,11 +68,7 @@ const toggleSidebar = () => {
           icon
           @click="toggleSidebar"
         >
-          <img
-            class="flex"
-            :src="basketIcon"
-            alt="basketIcon"
-          >
+          <span>Корзина</span>
           <div
             v-if="sushiListBascet.length"
             class="bascet-alert"

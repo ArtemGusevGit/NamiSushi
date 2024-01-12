@@ -194,7 +194,8 @@ export const state = () => ({
   sushiListBasket: [],
   isSidebarOpen: false,
   isMobileMenuOpen: false,
-  isOrderingMenuOpen: false
+  isOrderingMenuOpen: false,
+  isAuthMenuOpen: false
 })
 
 // getters
@@ -202,18 +203,27 @@ export const getters = {
   getSushiList (state) {
     return state.sushiList
   },
+
   getSushiBusketList (state) {
     return state.sushiListBasket
   },
+
   getSidebarStatus (state) {
     return state.isSidebarOpen
   },
+
   getMobileMenuStatus (state) {
     return state.isMobileMenuOpen
   },
+
   getOrderingMenuStatus (state) {
     return state.isOrderingMenuOpen
   },
+
+  getAuthMenuStatus (state) {
+    return state.isAuthMenuOpen
+  },
+
   getTotalCostInBasket (state) {
     return state.sushiListBasket.reduce((total, item) => {
       return total + item.count * item.cost
@@ -254,6 +264,10 @@ export const mutations = {
 
   toggleOrderingMenu (state) {
     state.isOrderingMenuOpen = !state.isOrderingMenuOpen
+  },
+
+  toggleAuthMenu (state) {
+    state.isAuthMenuOpen = !state.isAuthMenuOpen
   },
 
   addSushiToBasketById (state, id) {

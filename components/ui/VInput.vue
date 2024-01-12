@@ -44,7 +44,9 @@ input {
   transition: $transition-base;
   width: 100%;
   border: none;
-
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   &:focus {
     outline: none;

@@ -1,7 +1,7 @@
 <script setup>
 import { useStore } from '@nuxtjs/composition-api'
 import { computed } from 'vue'
-import VTitile from '~/components/ui/VTitile.vue'
+import VTitle from '~/components/ui/VTitle.vue'
 import VCardBtn from '~/components/ui/VCardButton.vue'
 import VHeaderBtn from '~/components/ui/VHeaderButton.vue'
 import fovoriteIcon from '~/assets/icons/favorite-active-icon.svg'
@@ -41,7 +41,7 @@ const changeFavoriteStatus = (index) => {
 
 <template>
   <div>
-    <VTitile>Корзина</VTitile>
+    <VTitle>Корзина</VTitle>
     <div
       v-if="!sushiListBascet.length"
       class="basket-list"

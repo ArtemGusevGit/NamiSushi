@@ -1,5 +1,5 @@
 <script setup>
-import VTitile from '~/components/ui/VTitile.vue'
+import VTitle from '~/components/ui/VTitle.vue'
 import deliveryIcon from '~/assets/icons/delivery-icon.svg'
 import bagIcon from '~/assets/icons/bag-icon.svg'
 import checkIcon from '~/assets/icons/check-icon.svg'
@@ -34,9 +34,9 @@ const onSubmit = async () => {
 
 <template>
   <div>
-    <VTitile class="order-title">
+    <VTitle class="order-title">
       Оформление заказа
-    </VTitile>
+    </VTitle>
     <div class="order-box">
       <div class="order-point">
         <div class="order-point__number">
@@ -133,11 +133,11 @@ const onSubmit = async () => {
     <div class="order-box">
       <div class="order-prices">
         <span class="order-price bordered">
-          Cтоимость товаров <strong>{{ totalCostInBasket }}  &#8381</strong>
+          Cтоимость товаров <strong class="price">{{ totalCostInBasket }}  &#8381</strong>
         </span>
         <span class="order-price">
           <strong>Итого к оплате</strong>
-          <strong>{{ totalCostInBasket }}  &#8381</strong>
+          <strong class="price">{{ totalCostInBasket }}  &#8381</strong>
         </span>
       </div>
       <VCardBtn
@@ -153,6 +153,7 @@ const onSubmit = async () => {
           href="https://vodnik.ru/article/personaldata"
           target="_blank"
           class="order-link">
+          <br class="text-break"/>
           с политикой обработки персональных данных
         </a>
       </span>
@@ -177,6 +178,10 @@ const onSubmit = async () => {
   background-color: $white;
   font-family: Ubuntu, sans-serif;
   font-size: 1.37rem;
+
+  @include media-breakpoint-down(sm) {
+    padding: 1.3rem;
+  }
 }
 
 .order-point {
@@ -207,18 +212,26 @@ const onSubmit = async () => {
 
 .delivery-methods {
   margin-left: 2rem;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   font-size: 1.125rem;
   color: #A5A5A5;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
+  @include media-breakpoint-down(sm) {
+    margin-left: 0.5rem;
+  }
 }
 
 .delivery-method {
   display: grid;
   align-items: center;
   grid-template-columns: 0.2fr 0.2fr 1fr 1fr;
+
+  @include media-breakpoint-down(sm) {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .delivery-circle {
@@ -252,9 +265,17 @@ const onSubmit = async () => {
   color: #222;
   margin-left: 2.5rem;
 
-  &__disabled {
-    color: #A5A5A5;
-    margin-left: 2.5rem;
+  @include media-breakpoint-down(sm) {
+    margin-left: 0rem;
+  }
+}
+
+.delivery-text__disabled {
+  color: #A5A5A5;
+  margin-left: 2.5rem;
+
+  @include media-breakpoint-down(sm) {
+    margin-left: 0rem;
   }
 }
 
@@ -277,6 +298,11 @@ const onSubmit = async () => {
   margin-left: 2rem;
   margin-top: 0.5rem;
   margin-right: 3rem;
+
+  @include media-breakpoint-down(sm) {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
 }
 
 .order-prices {
@@ -289,6 +315,11 @@ const onSubmit = async () => {
   font-size: 18px;
   font-weight: 300;
   gap: 1.25rem;
+
+  @include media-breakpoint-down(sm) {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
 }
 
 .order-price {
@@ -296,6 +327,10 @@ const onSubmit = async () => {
   grid-template-columns: 1fr 1fr;
   padding-bottom: 1.25rem;
   margin-right: 3rem;
+
+  @include media-breakpoint-down(sm) {
+    margin-right: 0rem;
+  }
 }
 
 .bordered {
@@ -311,6 +346,19 @@ const onSubmit = async () => {
   & a {
     color: #185598;
     border-bottom: 1px solid #185598;
+  }
+}
+
+.price {
+  @include media-breakpoint-down(sm) {
+    margin-left: auto;
+  }
+}
+
+.text-break {
+  display: none;
+  @include media-breakpoint-down(sm) {
+    display: flex;
   }
 }
 </style>
