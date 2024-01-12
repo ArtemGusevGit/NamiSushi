@@ -123,7 +123,10 @@ const changeFavoriteStatus = (index) => {
                   >
                 </VHeaderBtn>
               </div>
-              <div><span class="basket-font">Сумма</span> {{ sushi.count * sushi.cost }} &#8381</div>
+              <div>
+                <span class="basket-font">Сумма</span>
+                {{ sushi.count * sushi.cost }} &#8381
+              </div>
             </div>
             <img
               :src="deleteIcon"
@@ -133,7 +136,6 @@ const changeFavoriteStatus = (index) => {
             >
             </div>
           </TransitionGroup>
-
         </div>
         <div
           v-if="sushiListBascet.length"

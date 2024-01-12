@@ -102,7 +102,7 @@ const onSubmit = async () => {
           <ValidationProvider
             name="Телефон"
             v-slot="{ errors, valid }"
-            rules="required|numeric|max:12"
+            rules="required|numeric|max:12|min:3"
           >
             <VInput
               v-model="phone"
