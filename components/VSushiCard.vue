@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import { useStore } from '@nuxtjs/composition-api'
 import VCardBtn from '~/components/ui/VCardButton.vue'
 import VHeaderBtn from '~/components/ui/VHeaderButton.vue'
@@ -48,15 +48,15 @@ const props = defineProps({
 
 const store = useStore()
 
-const changeFavoriteStatus = (index: number) => {
+const changeFavoriteStatus = (index) => {
   store.commit('toggleFavoriteSushiById', index)
 }
 
-const addSushiToBascet = (index: number) => {
+const addSushiToBascet = (index) => {
   store.commit('addSushiToBasketById', index)
 }
 
-const removeSushiFromBuscet = (index: number) => {
+const removeSushiFromBuscet = (index) => {
   store.commit('removeSushiFromBasketById', index)
 }
 

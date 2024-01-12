@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import VTitile from '~/components/ui/VTitile.vue'
 </script>
 

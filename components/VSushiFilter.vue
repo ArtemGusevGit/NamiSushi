@@ -1,10 +1,10 @@
-<script lang="ts" setup>
+<script setup>
 import { ref } from 'vue'
 import { sushiItems } from '~/shared/consts'
 
 const activeItem = ref(0)
 
-const setActiveItem = (index: number) => {
+const setActiveItem = (index) => {
   activeItem.value = index
 }
 </script>

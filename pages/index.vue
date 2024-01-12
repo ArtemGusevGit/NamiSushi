@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { useStore } from '@nuxtjs/composition-api'
 import { computed } from 'vue'
 import VSushiList from '~/components/VSushiFilter.vue'
@@ -7,7 +7,6 @@ import VSushiCard from '~/components/VSushiCard.vue'
 
 const store = useStore()
 const sushiList = computed(() => store.getters.getSushiList)
-
 </script>
 
 <template>

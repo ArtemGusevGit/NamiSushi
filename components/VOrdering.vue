@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import VTitile from '~/components/ui/VTitile.vue'
 import deliveryIcon from '~/assets/icons/delivery-icon.svg'
 import bagIcon from '~/assets/icons/bag-icon.svg'

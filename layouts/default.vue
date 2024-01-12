@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import VHeader from '~/components/VHeader.vue'
 import VFooter from '~/components/VFooter.vue'
 </script>

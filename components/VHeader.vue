@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import { computed } from 'vue'
 import { useStore } from '@nuxtjs/composition-api'
 import VHeaderBtn from '~/components/ui/VHeaderButton.vue'

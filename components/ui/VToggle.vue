@@ -1,14 +1,6 @@
-<script lang="ts" setup>
-import { ref, computed } from 'vue'
+<script setup>
+import {  computed } from 'vue'
 import { useStore } from '@nuxtjs/composition-api'
-
-interface Props {
-  variant?: 'primary' | 'dark' | 'light'
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  variant: 'primary'
-})
 
 const store = useStore()
 const isMobileMenuOpen = computed(() => store.getters.getMobileMenuStatus)
@@ -21,7 +13,7 @@ const toggleMobileMenu = () => {
   <div
     class="mobile-menu-toggle"
     :class="[
-      `mobile-menu-toggle--variant-${variant}`,
+      `mobile-menu-toggle--variant-primary`,
       { active: isMobileMenuOpen },
     ]"
     @click="toggleMobileMenu"

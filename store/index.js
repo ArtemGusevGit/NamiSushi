@@ -199,23 +199,23 @@ export const state = () => ({
 
 // getters
 export const getters = {
-  getSushiList (state: any) {
+  getSushiList (state) {
     return state.sushiList
   },
-  getSushiBusketList (state: any) {
+  getSushiBusketList (state) {
     return state.sushiListBasket
   },
-  getSidebarStatus (state: any) {
+  getSidebarStatus (state) {
     return state.isSidebarOpen
   },
-  getMobileMenuStatus (state: any) {
+  getMobileMenuStatus (state) {
     return state.isMobileMenuOpen
   },
-  getOrderingMenuStatus (state: any) {
+  getOrderingMenuStatus (state) {
     return state.isOrderingMenuOpen
   },
-  getTotalCostInBasket (state: any) {
-    return state.sushiListBasket.reduce((total: number, item:number) => {
+  getTotalCostInBasket (state) {
+    return state.sushiListBasket.reduce((total, item) => {
       return total + item.count * item.cost
     }, 0)
   }
@@ -230,25 +230,25 @@ export const actions = {
 
 // mutations
 export const mutations = {
-  toggleFavoriteSushiById (state: any, id:number) {
-    const sushiItem = state.sushiList.find((item: { id: number }) => item.id === id)
+  toggleFavoriteSushiById (state, id) {
+    const sushiItem = state.sushiList.find((item) => item.id === id)
 
     if (sushiItem) {
       sushiItem.favorite = !sushiItem.favorite
     }
   },
 
-  toggleSidebar (state: any) {
+  toggleSidebar (state) {
     state.isSidebarOpen = !state.isSidebarOpen
   },
 
-  toggleMobileMenu (state: any) {
+  toggleMobileMenu (state) {
     state.isMobileMenuOpen = !state.isMobileMenuOpen
   },
 
-  addSushiToBasketById (state: any, id:number) {
-    const basketItem = state.sushiListBasket.find((item: { id: number }) => item.id === id)
-    const sushiItem = state.sushiList.find((item: { id: number }) => item.id === id)
+  addSushiToBasketById (state, id) {
+    const basketItem = state.sushiListBasket.find((item) => item.id === id)
+    const sushiItem = state.sushiList.find((item) => item.id === id)
 
     if (sushiItem) {
       sushiItem.count += 1
@@ -258,7 +258,7 @@ export const mutations = {
     if (basketItem) {
       basketItem.count += 1
     } else {
-      const sushiItem = state.sushiList.find((item: { id: number }) => item.id === id)
+      const sushiItem = state.sushiList.find((item) => item.id === id)
 
       if (sushiItem) {
         state.sushiListBasket.push({
@@ -275,8 +275,8 @@ export const mutations = {
     }
   },
 
-  removeSushiFromBasketById (state: any, id: number) {
-    const basketItemIndex = state.sushiListBasket.findIndex((item: { id: number }) => item.id === id)
+  removeSushiFromBasketById (state, id) {
+    const basketItemIndex = state.sushiListBasket.findIndex((item) => item.id === id)
 
     if (basketItemIndex !== -1) {
       const basketItem = state.sushiListBasket[basketItemIndex]
@@ -287,7 +287,7 @@ export const mutations = {
         state.sushiListBasket.splice(basketItemIndex, 1)
       }
 
-      const sushiItem = state.sushiList.find((item: { id: number }) => item.id === id)
+      const sushiItem = state.sushiList.find((item) => item.id === id)
       if (sushiItem) {
         sushiItem.count -= 1
 
@@ -298,14 +298,14 @@ export const mutations = {
     }
   },
 
-  removeAllSushiFromBasketById (state: any, id: number) {
-    const basketItemIndex = state.sushiListBasket.findIndex((item: { id: number }) => item.id === id)
+  removeAllSushiFromBasketById (state, id) {
+    const basketItemIndex = state.sushiListBasket.findIndex((item) => item.id === id)
 
     if (basketItemIndex !== -1) {
       state.sushiListBasket.splice(basketItemIndex, 1)
     }
 
-    const sushiItem = state.sushiList.find((item: { id: number }) => item.id === id)
+    const sushiItem = state.sushiList.find((item) => item.id === id)
     if (sushiItem) {
       sushiItem.count = 0
       sushiItem.addToBascet = false

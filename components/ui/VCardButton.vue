@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 const props = defineProps({
   white: {
     type: Boolean,
@@ -6,11 +6,8 @@ const props = defineProps({
   }
 })
 
-type TEmits = {
-  (e: 'click'): void
-}
 
-const emit = defineEmits<TEmits>()
+const emit = defineEmits()
 const handleClick = () => emit('click')
 
 </script>

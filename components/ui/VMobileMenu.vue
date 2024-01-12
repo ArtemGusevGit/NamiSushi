@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import { useStore } from '@nuxtjs/composition-api'
 import { computed } from 'vue'
 

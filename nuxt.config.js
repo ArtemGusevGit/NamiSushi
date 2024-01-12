@@ -5,7 +5,6 @@ export default {
     htmlAttrs: {
       lang: 'en'
     },
-
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -16,9 +15,6 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-
-  target: 'static',
-  ssr: false,
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['~/assets/styles/main.scss', '~/assets/styles/_vars.scss', '~/assets/styles/_mixins.scss', '~/assets/styles/_fonts.scss'],
@@ -36,7 +32,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@nuxt/typescript-build', '@nuxtjs/composition-api/module'
+    '@nuxtjs/composition-api/module'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

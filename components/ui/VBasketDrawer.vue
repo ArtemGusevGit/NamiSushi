@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import { useStore } from '@nuxtjs/composition-api'
 import { computed } from 'vue'
 import VTitile from '~/components/ui/VTitile.vue'
@@ -21,15 +21,15 @@ const toggleSidebar = () => {
   store.commit('toggleSidebar')
 }
 
-const addSushiToBascet = (index: number) => {
+const addSushiToBascet = (index) => {
   store.commit('addSushiToBasketById', index)
 }
 
-const removeSushiFromBuscet = (index: number) => {
+const removeSushiFromBuscet = (index) => {
   store.commit('removeSushiFromBasketById', index)
 }
 
-const removeAllSushiFromBasketById = (index: number) => {
+const removeAllSushiFromBasketById = (index) => {
   store.commit('removeAllSushiFromBasketById', index)
 }
 </script>
@@ -46,7 +46,7 @@ const removeAllSushiFromBasketById = (index: number) => {
       :class="{'open': isSidebarOpen}"
     >
       <div
-        v-if="!isOrderingMenuOpen"
+        v-if="isOrderingMenuOpen"
         class="basket"
       >
         <VTitile>Корзина</VTitile>
@@ -263,8 +263,7 @@ const removeAllSushiFromBasketById = (index: number) => {
   @include media-breakpoint-down(md) {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    // gap: 0.5rem;
+    gap: 0.5rem;
   }
   @include media-breakpoint-down(sm) {
     margin: 0 auto;
