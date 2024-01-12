@@ -3,7 +3,9 @@ const props = defineProps({
   white: {
     type: Boolean,
     required: false
-  }
+  },
+  fullWidth: Boolean,
+  orderBtn: Boolean,
 })
 
 
@@ -14,7 +16,7 @@ const handleClick = () => emit('click')
 
 <template>
   <button
-    :class="{'bg-white':white}"
+    :class="{'bg-white':white, 'full-width':fullWidth, 'order-btn': orderBtn}"
     @click="handleClick"
   >
     <slot />
@@ -38,5 +40,14 @@ button {
 .bg-white {
   background-color: $white;
   color: $dark;
+}
+
+.full-width {
+  width: 100%;
+}
+.order-btn {
+  border-radius: 0.5rem;
+  border: 1px solid #0C334A;
+  background: #0C334A;
 }
 </style>

@@ -32,6 +32,10 @@ const removeSushiFromBuscet = (index) => {
 const removeAllSushiFromBasketById = (index) => {
   store.commit('removeAllSushiFromBasketById', index)
 }
+
+const changeFavoriteStatus = (index) => {
+  store.commit('toggleFavoriteSushiById', index)
+}
 </script>
 
 <template>
@@ -46,7 +50,7 @@ const removeAllSushiFromBasketById = (index) => {
       :class="{'open': isSidebarOpen}"
     >
       <div
-        v-if="isOrderingMenuOpen"
+        v-if="!isOrderingMenuOpen"
         class="basket"
       >
         <VTitile>Корзина</VTitile>
@@ -72,14 +76,12 @@ const removeAllSushiFromBasketById = (index) => {
                 class="sushi-img"
               >
               <div class="sushi-item__desc">
-                <div
+                <img
                   class="sushi-icon"
+                  alt="fovoriteIcon"
+                  :src="sushi.favorite? fovoriteIcon : fovoriteDisabledIcon"
+                  @click="changeFavoriteStatus(sushi.id)"
                 >
-                  <img
-                    alt="fovoriteIcon"
-                    :src="sushi.favorite? fovoriteIcon : fovoriteDisabledIcon"
-                  >
-                </div>
                 <span class="sushi-title">{{ sushi.name }}</span>
                 <span>{{ sushi.description }}</span>
                 <span>({{ sushi.weight }} г)</span>
@@ -240,6 +242,11 @@ const removeAllSushiFromBasketById = (index) => {
   color: #717171;
   font-size: 0.81rem;
   font-family: PTSansNarrow, sans-serif;
+
+  @include media-breakpoint-down(md) {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
 }
 
 .sushi-title {
@@ -256,6 +263,10 @@ const removeAllSushiFromBasketById = (index) => {
   top: 3px;
   left: 150px;
   z-index: 999;
+
+  @include media-breakpoint-down(sm) {
+    display: none;
+  }
 }
 
 .sushi-item__actions {

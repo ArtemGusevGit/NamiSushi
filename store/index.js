@@ -224,7 +224,7 @@ export const getters = {
 // actions
 export const actions = {
   async fetchSushiList () {
-    // git api to get users
+    // fetch sushi 🍣
   }
 }
 
@@ -232,9 +232,14 @@ export const actions = {
 export const mutations = {
   toggleFavoriteSushiById (state, id) {
     const sushiItem = state.sushiList.find((item) => item.id === id)
+    const basketItem = state.sushiListBasket.find((item) => item.id === id)
 
     if (sushiItem) {
       sushiItem.favorite = !sushiItem.favorite
+    }
+
+    if (basketItem) {
+      basketItem.favorite = !basketItem.favorite
     }
   },
 
