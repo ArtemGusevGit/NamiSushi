@@ -1,18 +1,18 @@
 <script setup>
-import { useStore } from "@nuxtjs/composition-api";
-import { computed } from "vue";
-import VHeaderBtn from "~/components/ui/VHeaderButton.vue";
+import { useStore } from '@nuxtjs/composition-api';
+import { computed } from 'vue';
+import VHeaderBtn from '~/components/ui/VHeaderButton.vue';
 
 const store = useStore();
 const isMobileMenuOpen = computed(() => store.getters.getMobileMenuStatus);
 const sushiListBascet = computed(() => store.getters.getSushiBusketList);
 
 const toggleMobileMenu = () => {
-  store.commit("toggleMobileMenu");
+  store.commit('toggleMobileMenu');
 };
 
 const toggleSidebar = () => {
-  store.commit("toggleSidebar");
+  store.commit('toggleSidebar');
 };
 </script>
 
@@ -25,11 +25,11 @@ const toggleSidebar = () => {
     />
     <div class="sidebar" :class="{ open: isMobileMenuOpen }">
       <nav class="mobile-nav" @click="toggleMobileMenu">
-        <NuxtLink to="/" class="mobile-nav__item"> Меню </NuxtLink>
-        <NuxtLink to="/delivery" class="mobile-nav__item"> Доставка </NuxtLink>
-        <NuxtLink to="/promotion" class="mobile-nav__item"> Акции </NuxtLink>
-        <NuxtLink to="/feedback" class="mobile-nav__item"> Отзыв </NuxtLink>
-        <NuxtLink to="/contacts" class="mobile-nav__item"> Контакты </NuxtLink>
+        <NuxtLink to="/" class="mobile-nav__item">Меню</NuxtLink>
+        <NuxtLink to="/delivery" class="mobile-nav__item">Доставка</NuxtLink>
+        <NuxtLink to="/promotion" class="mobile-nav__item">Акции</NuxtLink>
+        <NuxtLink to="/feedback" class="mobile-nav__item">Отзыв</NuxtLink>
+        <NuxtLink to="/contacts" class="mobile-nav__item">Контакты</NuxtLink>
       </nav>
       <div class="header-btns">
         <VHeaderBtn rounded icon @click="toggleSidebar">
@@ -95,7 +95,7 @@ const toggleSidebar = () => {
   color: $white;
 
   &::after {
-    content: "";
+    content: '';
     width: 3px;
     height: 3px;
     background-color: $white;
@@ -122,7 +122,7 @@ a.nuxt-link-exact-active {
 }
 
 .bascet-alert {
-  content: "";
+  content: '';
   position: absolute;
   width: 8px;
   height: 8px;

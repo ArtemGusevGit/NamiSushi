@@ -26,7 +26,7 @@ const addSushiToBascet = (index) => {
   store.commit('addSushiToBasketById', index)
 }
 
-const removeSushiFromBuscet = (index) => {
+const removeSushiFromBasket = (index) => {
   store.commit('removeSushiFromBasketById', index)
 }
 
@@ -83,7 +83,7 @@ const changeFavoriteStatus = (index) => {
               rounded
               icon
               secondary
-              @click="removeSushiFromBuscet(sushi.id)"
+              @click="removeSushiFromBasket(sushi.id)"
             >
               <img
                 class="sushi-counter__icon"

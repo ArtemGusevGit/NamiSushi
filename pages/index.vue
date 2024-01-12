@@ -26,7 +26,7 @@ export default defineComponent({
     <VTitle>{{ title }}</VTitle>
     <VSushiList />
     <div class="sushi-list">
-      <div v-for="(sushi, index) in sushiList" :key="index">
+      <div v-for="sushi in sushiList" :key="sushi.id">
         <VSushiCard
           :id="sushi.id"
           :name="sushi.name"

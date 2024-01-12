@@ -56,7 +56,7 @@ const addSushiToBascet = (index) => {
   store.commit('addSushiToBasketById', index);
 };
 
-const removeSushiFromBuscet = (index) => {
+const removeSushiFromBasket = (index) => {
   store.commit('removeSushiFromBasketById', index);
 };
 </script>
@@ -103,7 +103,7 @@ const removeSushiFromBuscet = (index) => {
         <span class="sushi-count">
           {{ count }}
         </span>
-        <VHeaderBtn rounded icon @click="removeSushiFromBuscet(id)">
+        <VHeaderBtn rounded icon @click="removeSushiFromBasket(id)">
           <img class="flex" :src="removeIcon" alt="removeIcon" />
         </VHeaderBtn>
       </div>
@@ -122,6 +122,7 @@ const removeSushiFromBuscet = (index) => {
   position: relative;
   width: 16.8rem;
   height: 100%;
+  transition: all 0.2s ease-out;
 }
 
 .sushi-card__icon {

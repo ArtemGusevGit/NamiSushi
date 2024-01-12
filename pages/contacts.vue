@@ -1,6 +1,7 @@
 <script setup>
 import VTitle from '~/components/ui/VTitle.vue';
 import { ref, useMeta, defineComponent } from '@nuxtjs/composition-api';
+
 const title = ref('Контакты');
 
 useMeta(() => ({

@@ -82,7 +82,7 @@ const onSubmit = async () => {
               <VInput
                 v-model="phone"
                 placeholder="Телефон"
-                type="text"
+                type="tel"
                 :valid="valid"
                 :inputIcon="phoneIcon"
                 :error-message="errors"

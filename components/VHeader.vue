@@ -38,14 +38,12 @@ const toggleAuthMenu = () => {
             />
           </div>
           <nav class="header-nav">
-            <NuxtLink to="/" class="header-nav__item"> Меню </NuxtLink>
+            <NuxtLink to="/" class="header-nav__item">Меню</NuxtLink>
             <NuxtLink to="/delivery" class="header-nav__item">
               Доставка
             </NuxtLink>
-            <NuxtLink to="/promotion" class="header-nav__item">
-              Акции
-            </NuxtLink>
-            <NuxtLink to="/feedback" class="header-nav__item"> Отзыв </NuxtLink>
+            <NuxtLink to="/promotion" class="header-nav__item">Акции</NuxtLink>
+            <NuxtLink to="/feedback" class="header-nav__item">Отзыв</NuxtLink>
             <NuxtLink to="/contacts" class="header-nav__item">
               Контакты
             </NuxtLink>

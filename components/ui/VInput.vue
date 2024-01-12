@@ -10,7 +10,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits();
-const updateValue = (event) => emit("input", event.target.value);
+const updateValue = (event) => emit('input', event.target.value);
 </script>
 
 <template>
@@ -20,9 +20,13 @@ const updateValue = (event) => emit("input", event.target.value);
       :class="{ error: !valid && errorMessage.length }"
     >
       <img class="input-icon" :src="inputIcon" :alt="inputIcon" />
-      <input type="type" :placeholder="placeholder" @input="updateValue" />
+      <input
+        type="type"
+        autocomplete="on"
+        :placeholder="placeholder"
+        @input="updateValue"
+      />
     </div>
-
     <div v-if="errorMessage">
       <div class="custom-input__error">{{ errorMessage[0] }}</div>
     </div>
@@ -41,10 +45,6 @@ input {
 
   &:focus {
     outline: none;
-  }
-
-  &:hover {
-    // border: 2px solid $primary;
   }
 
   &::placeholder {
