@@ -9,7 +9,7 @@ import fovoriteDisabledIcon from '~/assets/icons/favorite-icon.svg'
 import removeIcon from '~/assets/icons/remove-icon.svg'
 import addIcon from '~/assets/icons/add-icon.svg'
 import deleteIcon from '~/assets/icons/delete-icon.png'
-import VOrdering from '~/components/VOrdering.vue'
+import VOrder from '~/components/VOrder.vue'
 
 const store = useStore()
 const isSidebarOpen = computed(() => store.getters.getSidebarStatus)
@@ -158,7 +158,7 @@ const changeFavoriteStatus = (index) => {
         v-else
         class="ordering"
       >
-        <VOrdering />
+        <VOrder />
       </div>
     </div>
   </div>
