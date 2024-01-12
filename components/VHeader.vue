@@ -131,7 +131,7 @@ header {
   display: none !important;
 
   @include media-breakpoint-down(xl) {
-    display: flex;
+    display: flex !important;
   }
 }
 
