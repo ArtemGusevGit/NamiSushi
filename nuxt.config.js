@@ -47,7 +47,7 @@ export default {
       'vee-validate/dist/rules'
     ]
   },
-  router: {
-    base: '/veevalidate-nuxtjs-sample/'
-  }
+  // router: {
+  //   base: '/veevalidate-nuxtjs-sample/'
+  // }
 }

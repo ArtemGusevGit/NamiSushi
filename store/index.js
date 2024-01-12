@@ -194,7 +194,7 @@ export const state = () => ({
   sushiListBasket: [],
   isSidebarOpen: false,
   isMobileMenuOpen: false,
-  isOrderingMenuOpen: true
+  isOrderingMenuOpen: false
 })
 
 // getters
@@ -245,10 +245,15 @@ export const mutations = {
 
   toggleSidebar (state) {
     state.isSidebarOpen = !state.isSidebarOpen
+    state.isOrderingMenuOpen = false
   },
 
   toggleMobileMenu (state) {
     state.isMobileMenuOpen = !state.isMobileMenuOpen
+  },
+
+  toggleOrderingMenu (state) {
+    state.isOrderingMenuOpen = !state.isOrderingMenuOpen
   },
 
   addSushiToBasketById (state, id) {

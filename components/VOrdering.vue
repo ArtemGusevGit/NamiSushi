@@ -16,9 +16,18 @@ const info = ref('')
 const store = useStore()
 const totalCostInBasket = computed(() => store.getters.getTotalCostInBasket)
 
+const toggleSidebar = () => {
+  store.commit('toggleSidebar')
+  store.commit('toggleOrderingMenu')
+}
 
 const onSubmit = async () => {
-  //send data to server 🎇
+  payload = {
+    name: name.value,
+    phone: phone.value,
+    info: info.value
+  }
+  //send payload to the server 🎇
 };
 </script>
 
@@ -127,14 +136,22 @@ const onSubmit = async () => {
           <strong>{{ totalCostInBasket }}  &#8381</strong>
         </span>
       </div>
-      <div class="vtn">
-        <VCardBtn
-          fullWidth
-          orderBtn
-        >
-          Купить и оплатить
-        </VCardBtn>
-      </div>
+      <VCardBtn
+        fullWidth
+        orderBtn
+        @click="toggleSidebar"
+      >
+        Купить и оплатить
+      </VCardBtn>
+      <span class="order-info">
+        Создавая заказ, вы соглашаетесь
+        <a
+          href="https://vodnik.ru/article/personaldata"
+          target="_blank"
+          class="order-link">
+          с политикой обработки персональных данных
+        </a>
+      </span>
     </div>
   </div>
 </template>
@@ -279,5 +296,17 @@ const onSubmit = async () => {
 
 .bordered {
   border-bottom: 1px solid #D9D9D9;
+}
+
+.order-info {
+  margin-top: 1.125rem;
+  font-family: Ubuntu, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+
+  & a {
+    color: #185598;
+    border-bottom: 1px solid #185598;
+  }
 }
 </style>

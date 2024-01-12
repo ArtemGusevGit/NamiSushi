@@ -21,6 +21,10 @@ const toggleSidebar = () => {
   store.commit('toggleSidebar')
 }
 
+const toggleOrderingMenu = () => {
+  store.commit('toggleOrderingMenu')
+}
+
 const addSushiToBascet = (index) => {
   store.commit('addSushiToBasketById', index)
 }
@@ -144,13 +148,12 @@ const changeFavoriteStatus = (index) => {
           </VCardBtn>
           <VCardBtn
             v-if="sushiListBascet.length"
-            @click="toggleSidebar"
+            @click="toggleOrderingMenu"
           >
             Оформить заказ
           </VCardBtn>
         </div>
       </div>
-
       <div
         v-else
         class="ordering"
